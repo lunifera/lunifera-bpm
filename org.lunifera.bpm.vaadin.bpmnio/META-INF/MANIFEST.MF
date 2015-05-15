@@ -1,0 +1,20 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Vaadin wrapper for http://bpmn.io
+Bundle-SymbolicName: org.lunifera.bpm.vaadin.bpmnio
+Bundle-Version: 0.9.1.qualifier
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-ActivationPolicy: lazy
+Bundle-Vendor: Lunifera GmbH
+Import-Package: org.osgi.framework;version="1.8.0",
+ org.osgi.service.component;version="1.2.2",
+ org.osgi.service.component.annotations;version="1.2.0",
+ org.slf4j;version="1.7.2"
+Require-Bundle: com.vaadin.client;bundle-version="7.4.3",
+ com.vaadin.server;bundle-version="7.4.3",
+ com.vaadin.shared;bundle-version="7.4.3",
+ org.json;bundle-version="0.0.20080701",
+ org.jsoup;bundle-version="1.7.2"
+Export-Package: org.lunifera.bpmn.vaadin.bpmnio,
+ org.lunifera.bpmn.vaadin.bpmnio.client.modeler,
+ org.lunifera.bpmn.vaadin.bpmnio.client.resources

@@ -32,13 +32,15 @@
 	</distributionManagement>
 
 	<modules>
-
-	<module>org.lunifera.bpmn.vaadin.bpmnio</module>
-	<module>org.lunifera.bpmn.vaadin.bpmnio.sample</module>
+		<module>org.lunifera.bpm.vaadin.bpmnio</module>
+		<module>org.lunifera.bpm.vaadin.bpmnio.sample</module>
+		<module>org.lunifera.bpm.api</module>
+		<module>org.lunifera.bpm.engine</module>
+		<module>org.lunifera.bpm.tasks.server</module>
 	</modules>
 
 	<profiles>
-	
+
 		<profile>
 			<id>build.p2</id>
 			<activation>

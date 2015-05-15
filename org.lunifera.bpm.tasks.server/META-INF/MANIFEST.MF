@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Lunifera Task Server
+Bundle-SymbolicName: org.lunifera.bpm.tasks.server;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Import-Package: javax.persistence;version="2.1.0",
+ org.osgi.framework;version="1.8.0",
+ org.osgi.service.component.annotations;version="1.2.0"
+Require-Bundle: org.lunifera.drools.allinone;bundle-version="5.5.1",
+ org.apache.aries.transaction.manager;bundle-version="0.2.0",
+ org.apache.aries.transaction.wrappers;bundle-version="0.2.0"
+Service-Component: OSGI-INF/org.lunifera.bpm.tasks.server.MinaTaskService.xml
+Bundle-Vendor: Lunifera GmbH

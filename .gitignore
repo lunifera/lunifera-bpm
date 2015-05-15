@@ -1,5 +1,6 @@
 bin/
 .*.jar
+*.jar
 **/xtend-gen
 .DS_Store
 target
