@@ -34,13 +34,16 @@
 	<modules>
 		<module>org.lunifera.bpm.vaadin.bpmnio</module>
 		<module>org.lunifera.bpm.vaadin.bpmnio.sample</module>
-		<module>org.lunifera.bpm.api</module>
-		<module>org.lunifera.bpm.engine</module>
-		<module>org.lunifera.bpm.tasks.server</module>
+		<module>org.lunifera.bpm.drools.common</module>
+		<module>org.lunifera.bpm.drools.engine</module>
+		<module>org.lunifera.bpm.drools.tasks.server</module>
+		<module>org.lunifera.bpm.drools.kbase.extender</module>
+		<module>org.lunifera.bpm.drools.ui.vaaclipse</module>
+		<module>org.lunifera.bpm.drools.ui.vaadin</module>
+		<module>org.lunifera.bpm.drools.jpa</module>
 	</modules>
 
 	<profiles>
-
 		<profile>
 			<id>build.p2</id>
 			<activation>

@@ -1,0 +1,21 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: org.lunifera.bpm.drools.ui.vaadin
+Bundle-SymbolicName: org.lunifera.bpm.drools.ui.vaadin
+Bundle-Version: 0.1.0.qualifier
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Import-Package: org.osgi.framework;version="1.7.0",
+ org.slf4j;resolution:=optional
+Require-Bundle: org.lunifera.drools.allinone;bundle-version="5.5.1",
+ org.lunifera.bpm.drools.common;bundle-version="0.1.0",
+ com.vaadin.server;bundle-version="[7.3.8,7.4.0)",
+ com.vaadin.shared;bundle-version="[7.3.8,7.4.0)",
+ org.json;bundle-version="0.0.20080701",
+ org.lunifera.runtime.web.vaadin.common;bundle-version="[0.9.1,0.10.0)",
+ org.lunifera.runtime.common;bundle-version="[0.9.1,0.10.0)",
+ org.lunifera.runtime.web.vaadin.databinding;bundle-version="[0.9.1,0.10.0)",
+ org.lunifera.ecview.core.common,
+ javax.persistence
+Bundle-Vendor: Lunifera GmbH
+Export-Package: org.lunifera.bpm.drools.ui.vaadin,
+ org.lunifera.bpm.drools.ui.vaadin.container

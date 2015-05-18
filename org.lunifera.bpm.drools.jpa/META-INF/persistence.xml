@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.0"
+	xmlns="http://java.sun.com/xml/ns/persistence" xmlns:orm="http://java.sun.com/xml/ns/persistence/orm"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd http://java.sun.com/xml/ns/persistence/orm http://java.sun.com/xml/ns/persistence/orm_2_0.xsd">
+
+	<persistence-unit name="org.lunifera.jbpm.persistence.jpa"
+		transaction-type="JTA">
+		<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+		<jta-data-source>osgi:service/DroolsDsJTA</jta-data-source>
+		<non-jta-data-source>osgi:service/DroolsDs</non-jta-data-source>
+<!-- 		<mapping-file>META-INF/ProcessInstanceInfoMapping-JPA2.xml</mapping-file> -->
+		<mapping-file>META-INF/JBPMorm.xml</mapping-file>
+		<mapping-file>META-INF/TaskEventsorm.xml</mapping-file>
+		<mapping-file>META-INF/Taskorm.xml</mapping-file>
+		
+		<class>org.drools.persistence.info.SessionInfo</class>
+		<class>org.jbpm.persistence.processinstance.ProcessInstanceInfo</class>
+		<class>org.drools.persistence.info.WorkItemInfo</class>
+    	
+		<class>org.jbpm.task.Attachment</class>
+		<class>org.jbpm.task.Content</class>
+		<class>org.jbpm.task.BooleanExpression</class>
+		<class>org.jbpm.task.Comment</class>
+		<class>org.jbpm.task.Deadline</class>
+		<class>org.jbpm.task.Comment</class>
+		<class>org.jbpm.task.Deadline</class>
+		<class>org.jbpm.task.Delegation</class>
+		<class>org.jbpm.task.Escalation</class>
+		<class>org.jbpm.task.OrganizationalEntity</class>
+		<class>org.jbpm.task.Group</class>
+		<class>org.jbpm.task.I18NText</class>
+		<class>org.jbpm.task.Notification</class>
+		<class>org.jbpm.task.EmailNotification</class>
+		<class>org.jbpm.task.EmailNotificationHeader</class>
+		<class>org.jbpm.task.PeopleAssignments</class>
+		<class>org.jbpm.task.Reassignment</class>
+		<class>org.jbpm.task.Status</class>
+		<class>org.jbpm.task.Task</class>
+		<class>org.jbpm.task.TaskData</class>
+		<class>org.jbpm.task.SubTasksStrategy</class>
+		<class>org.jbpm.task.OnParentAbortAllSubTasksEndStrategy</class>
+		<class>org.jbpm.task.OnAllSubTasksEndParentEndStrategy</class>
+		<class>org.jbpm.task.User</class>
+		<class>org.jbpm.task.event.entity.TaskEvent</class>
+		<class>org.jbpm.task.event.entity.TaskClaimedEvent</class>
+		<class>org.jbpm.task.event.entity.TaskCompletedEvent</class>
+		<class>org.jbpm.task.event.entity.TaskCreatedEvent</class>
+		<class>org.jbpm.task.event.entity.TaskFailedEvent</class>
+		<class>org.jbpm.task.event.entity.TaskForwardedEvent</class>
+		<class>org.jbpm.task.event.entity.TaskReleasedEvent</class>
+		<class>org.jbpm.task.event.entity.TaskSkippedEvent</class>
+		<class>org.jbpm.task.event.entity.TaskStartedEvent</class>
+		<class>org.jbpm.task.event.entity.TaskStoppedEvent</class>
+		<class>org.jbpm.task.event.entity.TaskUserEvent</class>
+
+		<exclude-unlisted-classes>false</exclude-unlisted-classes>
+
+		<properties>
+			<property name="eclipselink.target-server"
+				value="org.lunifera.eclipselink.core.fragment.LuniferaPlatform" />
+			<property name="eclipselink.target-database" value="Derby" />
+			<property name="javax.persistence.jdbc.driver" value="org.apache.derby.jdbc.EmbeddedDriver" />
+			<property name="javax.persistence.jdbc.url" value="jdbc:derby:carstoreDB;create=true" />
+			<property name="javax.persistence.jdbc.user" value="app" />
+			<property name="javax.persistence.jdbc.password" value="app" />
+
+			<property name="eclipselink.logging.level" value="FINE" />
+			<property name="eclipselink.logging.timestamp" value="false" />
+			<property name="eclipselink.logging.thread" value="false" />
+			<property name="eclipselink.logging.exceptions" value="true" />
+			<property name="eclipselink.orm.throw.exceptions" value="true" />
+			<property name="eclipselink.jdbc.read-connections.min"
+				value="1" />
+			<property name="eclipselink.jdbc.write-connections.min"
+				value="1" />
+
+			<!-- EclipseLink should create the database schema automatically -->
+			<property name="eclipselink.ddl-generation" value="drop-and-create-tables" />
+			<property name="eclipselink.create-ddl-jdbc-file-name"
+				value="createDDL_ddlGeneration.jdbc" />
+			<property name="eclipselink.drop-ddl-jdbc-file-name" value="dropDDL_ddlGeneration.jdbc" />
+			<property name="eclipselink.ddl-generation.output-mode"
+				value="both" />
+
+			<property name="eclipselink.weaving" value="static" />
+		</properties>
+	</persistence-unit>
+</persistence>

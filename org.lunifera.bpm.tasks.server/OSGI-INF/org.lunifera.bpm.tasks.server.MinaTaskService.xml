@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0" activate="activate" deactivate="deactivate" immediate="true" name="org.lunifera.bpm.tasks.server.MinaTaskService">
-   <implementation class="org.lunifera.bpm.tasks.server.MinaTaskService"/>
-   <reference bind="bindEntityManagerFactory" cardinality="1..1" interface="javax.persistence.EntityManagerFactory" name="entityManagerFactory" policy="static" target="(osgi.unit.name=org.lunifera.jbpm.persistence.jpa)" unbind="unbindEntityManagerFactory"/>
-</scr:component>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0" activate="activate" deactivate="deactivate" immediate="true" name="org.lunifera.bpm.drools.engine.BPMService">
+   <implementation class="org.lunifera.bpm.drools.engine.BPMService"/>
+   <service>
+      <provide interface="org.lunifera.bpm.drools.common.server.IBPMService"/>
+   </service>
+   <reference bind="bindEntityManagerFactory" cardinality="1..1" interface="javax.persistence.EntityManagerFactory" name="entityManagerFactory" policy="static" target="(osgi.unit.name=org.lunifera.jbpm.persistence.jpa)" unbind="unbindEntityManagerFactory"/>
+   <reference bind="bindKnowledgeBaseFactoryService" cardinality="1..1" interface="org.drools.KnowledgeBaseFactoryService" name="knowledgeBaseFactoryService" policy="static" unbind="unbindKnowledgeBaseFactoryService"/>
+   <reference bind="bindKnowledgeBuilderFactoryService" cardinality="1..1" interface="org.drools.builder.KnowledgeBuilderFactoryService" name="knowledgeBuilderFactoryService" policy="static" unbind="unbindKnowledgeBuilderFactoryService"/>
+   <reference bind="bindDatasource" cardinality="1..1" interface="javax.sql.DataSource" name="mandatoryDatasource" policy="static" target="(osgi.jndi.service.name=DroolsXADs)" unbind="unbindDatasource"/>
+   <reference bind="bindResourceFactoryService" cardinality="1..1" interface="org.drools.io.ResourceFactoryService" name="resourceFactoryService" policy="static" unbind="unbindResourceFactoryService"/>
+   <reference bind="bindTransactionManager" cardinality="1..1" interface="javax.transaction.TransactionManager" name="transactionManager" policy="static" unbind="unbindTransactionManager"/>
+</scr:component>
