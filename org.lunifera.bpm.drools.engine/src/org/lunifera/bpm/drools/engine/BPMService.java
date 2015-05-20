@@ -3,6 +3,7 @@ package org.lunifera.bpm.drools.engine;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Properties;
+import java.util.UUID;
 
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
@@ -17,19 +18,26 @@ import org.drools.base.MapGlobalResolver;
 import org.drools.builder.KnowledgeBuilder;
 import org.drools.builder.KnowledgeBuilderConfiguration;
 import org.drools.builder.KnowledgeBuilderFactoryService;
+import org.drools.command.Command;
 import org.drools.io.ResourceFactoryService;
 import org.drools.persistence.jpa.JPAKnowledgeService;
 import org.drools.runtime.Environment;
 import org.drools.runtime.EnvironmentName;
 import org.drools.runtime.KnowledgeSessionConfiguration;
 import org.drools.runtime.StatefulKnowledgeSession;
+import org.drools.runtime.process.WorkItem;
+import org.drools.runtime.process.WorkItemHandler;
+import org.drools.runtime.process.WorkItemManager;
+import org.jbpm.task.service.SyncTaskServiceWrapper;
+import org.jbpm.task.service.TaskClient;
 import org.jbpm.task.service.TaskService;
 import org.jbpm.task.service.local.LocalTaskService;
+import org.jbpm.task.service.mina.MinaTaskClientConnector;
+import org.jbpm.task.service.mina.MinaTaskClientHandler;
 import org.lunifera.bpm.drools.common.server.DroolsSession;
 import org.lunifera.bpm.drools.common.server.IBPMService;
 import org.lunifera.bpm.drools.common.server.IDroolsSession;
 import org.lunifera.bpm.drools.common.server.commands.IKnowledgeBaseCommand;
-import org.lunifera.bpm.drools.common.server.commands.IStatefulSessionCommand;
 import org.lunifera.bpm.drools.common.server.commands.ITaskServiceCommand;
 import org.osgi.service.component.ComponentContext;
 import org.osgi.service.component.annotations.Activate;
@@ -57,10 +65,6 @@ public class BPMService implements IBPMService {
 	private ResourceFactoryService resourceFactoryService;
 	private TransactionManager tm;
 	private EntityManagerFactory emf;
-
-	private IDroolsSession serverSession;
-
-	private boolean serverSessionInitializing;
 
 	@Activate
 	protected void activate(ComponentContext context) {
@@ -109,8 +113,6 @@ public class BPMService implements IBPMService {
 
 	@Deactivate
 	protected void deactivate(ComponentContext context) {
-		serverSession.dispose();
-		serverSession = null;
 		this.context = null;
 	}
 
@@ -187,44 +189,14 @@ public class BPMService implements IBPMService {
 		return kbase;
 	}
 
-	// // for internal use only TODO - remove later
-	// protected void startProcess(String processId,
-	// Map<String, Object> parameters, boolean loggerOn) {
-	//
-	// LOGGER.debug("starting process " + processId);
-	// StatefulKnowledgeSession ksession = createSession();
-	//
-	// KnowledgeRuntimeLogger logger = null;
-	// if (loggerOn) {
-	// logger = KnowledgeRuntimeLoggerFactory.newThreadedFileLogger(
-	// ksession, processId, 1000);
-	// }
-	//
-	// LOGGER.debug(processId + " started ");
-	// ksession.startProcess(processId, parameters);
-	// ksession.fireAllRules();
-	//
-	// if (loggerOn) {
-	// logger.close();
-	// }
-	//
-	// ksession.dispose();
-	//
-	// LOGGER.debug("all rules were fired for " + processId);
-	// }
-
 	public IDroolsSession createSession() {
-
-//		if (serverSession != null) {
-//			return serverSession;
-//		}
 
 		StatefulKnowledgeSession ksession;
 		// create a new knowledge session that uses JPA to store the runtime
 		// state
 		ksession = JPAKnowledgeService.newStatefulKnowledgeSession(kbase,
 				kieSessionConfig, env);
-		serverSession = new DroolsSession(ksession);
+		DroolsSession kSession = new DroolsSession(ksession);
 
 		// MinaHTWorkItemHandler humanTaskHandler = new MinaHTWorkItemHandler(
 		// ksession);
@@ -239,9 +211,24 @@ public class BPMService implements IBPMService {
 				client, ksession);
 		ksession.getWorkItemManager().registerWorkItemHandler("Human Task",
 				taskHandler);
+		ksession.getWorkItemManager().registerWorkItemHandler("",
+				new WorkItemHandler() {
+					@Override
+					public void executeWorkItem(WorkItem workItem,
+							WorkItemManager manager) {
+						System.out.println("Executed");
+						manager.completeWorkItem(workItem.getId(), null);
+					}
+
+					@Override
+					public void abortWorkItem(WorkItem workItem,
+							WorkItemManager manager) {
+						System.out.println("Aborted");
+					}
+				});
 		taskHandler.connect();
 
-		serverSession.registerDisposal(new IDroolsSession.DroolsDisposeable() {
+		kSession.registerDisposal(new IDroolsSession.DroolsDisposeable() {
 			@Override
 			public void dispose() {
 				try {
@@ -252,7 +239,7 @@ public class BPMService implements IBPMService {
 			}
 		});
 
-		return serverSession;
+		return kSession;
 	}
 
 	private boolean isActive() {
@@ -264,28 +251,38 @@ public class BPMService implements IBPMService {
 		if (isActive() && command != null) {
 			TaskService taskService = new TaskService(emf,
 					SystemEventListenerFactory.getSystemEventListener());
-			command.execute(taskService, this);
+			command.execute(taskService);
 		}
 	}
 
 	@Override
 	public void execute(IKnowledgeBaseCommand command) {
 		if (isActive() && command != null) {
-			command.execute(kbase, this);
+			command.execute(kbase);
 		}
 	}
 
 	@Override
-	public void execute(IStatefulSessionCommand command) {
+	public <M> M execute(final Command<M> command, boolean disposeSession) {
 		if (isActive() && command != null) {
-			IDroolsSession session = createSession();
-			// JPAWorkingMemoryDbLogger logger = new
-			// JPAWorkingMemoryDbLogger(session);
+			// create a new session
+			final IDroolsSession session = createSession();
 			try {
-				command.execute(session, this);
+				return session.getWrappedSession().execute(command);
 			} finally {
-				// session.dispose();
+				if (disposeSession) {
+					session.dispose();
+				}
 			}
 		}
+		return null;
+	}
+
+	public org.jbpm.task.TaskService createTaskClient() {
+		org.jbpm.task.TaskService client = new SyncTaskServiceWrapper(
+				new TaskClient(new MinaTaskClientConnector(UUID.randomUUID()
+						.toString(), new MinaTaskClientHandler(
+						SystemEventListenerFactory.getSystemEventListener()))));
+		return client;
 	}
 }

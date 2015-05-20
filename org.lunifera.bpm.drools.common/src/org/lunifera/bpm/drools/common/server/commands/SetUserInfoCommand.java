@@ -2,7 +2,6 @@ package org.lunifera.bpm.drools.common.server.commands;
 
 import org.jbpm.task.UserInfo;
 import org.jbpm.task.service.TaskService;
-import org.lunifera.bpm.drools.common.server.IBPMService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -19,7 +18,7 @@ public class SetUserInfoCommand implements ITaskServiceCommand {
 	}
 
 	@Override
-	public void execute(TaskService target, IBPMService service) {
+	public void execute(TaskService target) {
 		LOGGER.debug("Set userInfo to task service");
 		target.setUserinfo(userInfo);
 	}

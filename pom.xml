@@ -41,6 +41,8 @@
 		<module>org.lunifera.bpm.drools.ui.vaaclipse</module>
 		<module>org.lunifera.bpm.drools.ui.vaadin</module>
 		<module>org.lunifera.bpm.drools.jpa</module>
+		<module>org.lunifera.bpm.drools.sample.vaadin</module>
+		<module>org.lunifera.bpm.drools.sample.vaadin.bootstrap</module>
 	</modules>
 
 	<profiles>

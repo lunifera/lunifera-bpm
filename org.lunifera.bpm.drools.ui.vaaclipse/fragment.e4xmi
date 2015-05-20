@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="ASCII"?>
+<fragment:ModelFragments xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:basic="http://www.eclipse.org/ui/2010/UIModel/application/descriptor/basic" xmlns:basic_1="http://www.eclipse.org/ui/2010/UIModel/application/ui/basic" xmlns:commands="http://www.eclipse.org/ui/2010/UIModel/application/commands" xmlns:fragment="http://www.eclipse.org/ui/2010/UIModel/fragment" xmlns:menu="http://www.eclipse.org/ui/2010/UIModel/application/ui/menu" xmi:id="_MNDvwMWxEeSzw8CCZBgGfQ">
+  <fragments xsi:type="fragment:StringModelFragment" xmi:id="_knKeUMdKEeS1P7t7bKAKuw" featurename="commands" parentElementId="org.lunifera.vaaclipse.addons.application">
+    <elements xsi:type="commands:Command" xmi:id="_Zh3zMP10EeSRwa39RdVPrg" elementId="org.lunifera.bpm.drools.ui.vaaclipse.command.claimTask" commandName="Claim Task" description="Claim Task"/>
+    <elements xsi:type="commands:Command" xmi:id="_eP1-MP10EeSRwa39RdVPrg" elementId="org.lunifera.bpm.drools.ui.vaaclipse.command.startTask" commandName="Start Task" description="Start Task"/>
+    <elements xsi:type="commands:Command" xmi:id="_ftnjwP10EeSRwa39RdVPrg" elementId="org.lunifera.bpm.drools.ui.vaaclipse.command.completeTask" commandName="Complete Task" description="Complete Task"/>
+    <elements xsi:type="commands:Command" xmi:id="_jkDp0P10EeSRwa39RdVPrg" elementId="org.lunifera.bpm.drools.ui.vaaclipse.command.openUiForTask" commandName="Open Ui for Task" description="Open Ui for Task"/>
+    <elements xsi:type="commands:Command" xmi:id="_m9IecP10EeSRwa39RdVPrg" elementId="org.lunifera.bpm.drools.ui.vaaclipse.command.startProcess" commandName="Start Process" description="Start Process"/>
+  </fragments>
+  <fragments xsi:type="fragment:StringModelFragment" xmi:id="_wTGhAMdKEeS1P7t7bKAKuw" featurename="handlers" parentElementId="org.lunifera.vaaclipse.addons.application">
+    <elements xsi:type="commands:Handler" xmi:id="_q4uxUP10EeSRwa39RdVPrg" elementId="org.lunifera.bpm.drools.ui.vaaclipse.handler.claimTask" contributionURI="bundleclass://org.lunifera.bpm.drools.ui.vaaclipse/org.lunifera.bpm.drools.ui.vaaclipse.handler.ClaimTaskHandler" command="_Zh3zMP10EeSRwa39RdVPrg"/>
+    <elements xsi:type="commands:Handler" xmi:id="_5A1UcP10EeSRwa39RdVPrg" elementId="org.lunifera.bpm.drools.ui.vaaclipse.handler.startTask" contributionURI="bundleclass://org.lunifera.bpm.drools.ui.vaaclipse/org.lunifera.bpm.drools.ui.vaaclipse.handler.StartTaskHandler" command="_eP1-MP10EeSRwa39RdVPrg"/>
+    <elements xsi:type="commands:Handler" xmi:id="_5Jm18P10EeSRwa39RdVPrg" elementId="org.lunifera.bpm.drools.ui.vaaclipse.handler.completeTask" contributionURI="bundleclass://org.lunifera.bpm.drools.ui.vaaclipse/org.lunifera.bpm.drools.ui.vaaclipse.handler.CompleteTaskHandler" command="_ftnjwP10EeSRwa39RdVPrg"/>
+    <elements xsi:type="commands:Handler" xmi:id="_5L5U8P10EeSRwa39RdVPrg" elementId="org.lunifera.bpm.drools.ui.vaaclipse.handler.openUiForTask" contributionURI="bundleclass://org.lunifera.bpm.drools.ui.vaaclipse/org.lunifera.bpm.drools.ui.vaaclipse.handler.OpenUiForTaskHandler" command="_jkDp0P10EeSRwa39RdVPrg"/>
+    <elements xsi:type="commands:Handler" xmi:id="_5VDQ8P10EeSRwa39RdVPrg" elementId="org.lunifera.bpm.drools.ui.vaaclipse.handler.startProcess" contributionURI="bundleclass://org.lunifera.bpm.drools.ui.vaaclipse/org.lunifera.bpm.drools.ui.vaaclipse.handler.StartProcessHandler" command="_m9IecP10EeSRwa39RdVPrg"/>
+  </fragments>
+  <fragments xsi:type="fragment:StringModelFragment" xmi:id="_ieGRoM-xEeSscMz1WjkrfA" featurename="descriptors" parentElementId="org.lunifera.vaaclipse.addons.application">
+    <elements xsi:type="basic:PartDescriptor" xmi:id="_VG-MkM--EeSqGowmJdFaKQ" elementId="org.lunifera.bpm.drools.ui.vaaclipse.partdescriptor.processes" label="Bpm Processes" iconURI="platform:/plugin/org.lunifera.bpm.drools.ui.vaaclipse/images/process.png" tooltip="Shows all Bpm Processes" category="org.lunifera.vaaclipse.addons.application.partstack.main" closeable="true" contributionURI="bundleclass://org.lunifera.bpm.drools.ui.vaaclipse/org.lunifera.bpm.drools.ui.vaaclipse.ProcessView">
+      <persistedState key="ecview.viewId" value="org.lunifera.vaaclipse.addons.extension.system.DatasourceDetails"/>
+      <tags>View</tags>
+      <toolbar xmi:id="_e0UXcM_FEeSqGowmJdFaKQ" elementId="org.lunifera.bpm.drools.ui.vaaclipse.partdescriptor.processes.toolbar">
+        <children xsi:type="menu:HandledToolItem" xmi:id="_FMsNUP11EeSRwa39RdVPrg" elementId="org.lunifera.bpm.drools.ui.vaaclipse.handledtoolitem.claim" label="Start" command="_m9IecP10EeSRwa39RdVPrg"/>
+      </toolbar>
+    </elements>
+    <elements xsi:type="basic:PartDescriptor" xmi:id="_PGVocP10EeSRwa39RdVPrg" elementId="org.lunifera.bpm.drools.ui.vaaclipse.partdescriptor.tasks" label="Bpm Tasks" iconURI="platform:/plugin/org.lunifera.bpm.drools.ui.vaaclipse/images/tasks.png" tooltip="Shows all Bpm Tasks" category="org.lunifera.vaaclipse.addons.application.partstack.main" closeable="true" contributionURI="bundleclass://org.lunifera.bpm.drools.ui.vaaclipse/org.lunifera.bpm.drools.ui.vaaclipse.TaskView">
+      <persistedState key="ecview.viewId" value="org.lunifera.vaaclipse.addons.extension.system.DatasourceDetails"/>
+      <tags>View</tags>
+      <toolbar xmi:id="_PGVocf10EeSRwa39RdVPrg" elementId="org.lunifera.bpm.drools.ui.vaaclipse.partdescriptor.processes.toolbar">
+        <children xsi:type="menu:HandledToolItem" xmi:id="_HP_h0P11EeSRwa39RdVPrg" elementId="org.lunifera.bpm.drools.ui.vaaclipse.handledtoolitem.claimTask" label="Claim" command="_Zh3zMP10EeSRwa39RdVPrg"/>
+        <children xsi:type="menu:HandledToolItem" xmi:id="_HWtN0P11EeSRwa39RdVPrg" elementId="org.lunifera.bpm.drools.ui.vaaclipse.handledtoolitem.startTask" label="Start" command="_eP1-MP10EeSRwa39RdVPrg"/>
+        <children xsi:type="menu:HandledToolItem" xmi:id="_NUzj8P11EeSRwa39RdVPrg" elementId="org.lunifera.bpm.drools.ui.vaaclipse.handledtoolitem.completeTask" label="Complete" command="_ftnjwP10EeSRwa39RdVPrg"/>
+        <children xsi:type="menu:HandledToolItem" xmi:id="_PeEWgP11EeSRwa39RdVPrg" elementId="org.lunifera.bpm.drools.ui.vaaclipse.handledtoolitem.openUiForTask" label="Open UI" command="_jkDp0P10EeSRwa39RdVPrg"/>
+      </toolbar>
+    </elements>
+  </fragments>
+  <fragments xsi:type="fragment:StringModelFragment" xmi:id="_muCboP36EeSRwa39RdVPrg" featurename="sharedElements" parentElementId="mainWindow">
+    <elements xsi:type="basic_1:Part" xmi:id="_muCbof36EeSRwa39RdVPrg" elementId="org.lunifera.bpm.drools.ui.vaaclipse.partdescriptor.processes" accessibilityPhrase="" contributionURI="bundleclass://org.lunifera.bpm.drools.ui.vaaclipse/org.lunifera.bpm.drools.ui.vaaclipse.ProcessView" label="Bpm Processes" iconURI="platform:/plugin/org.lunifera.bpm.drools.ui.vaaclipse/images/process.png" tooltip="Shows all Bpm Processes" closeable="true"/>
+    <elements xsi:type="basic_1:Part" xmi:id="_muCbov36EeSRwa39RdVPrg" elementId="org.lunifera.bpm.drools.ui.vaaclipse.partdescriptor.tasks" accessibilityPhrase="" contributionURI="bundleclass://org.lunifera.bpm.drools.ui.vaaclipse/org.lunifera.bpm.drools.ui.vaaclipse.TaskView" label="Bpm Tasks" iconURI="platform:/plugin/org.lunifera.bpm.drools.ui.vaaclipse/images/tasks.png" tooltip="Shows all Bpm Tasks" closeable="true"/>
+  </fragments>
+</fragment:ModelFragments>

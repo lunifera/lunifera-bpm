@@ -5,7 +5,6 @@ import java.util.Map;
 import org.jbpm.task.Group;
 import org.jbpm.task.User;
 import org.jbpm.task.service.TaskService;
-import org.lunifera.bpm.drools.common.server.IBPMService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -25,7 +24,7 @@ public class AddUsersAndGroupsCommand implements ITaskServiceCommand {
 	}
 
 	@Override
-	public void execute(TaskService target, IBPMService service) {
+	public void execute(TaskService target) {
 
 		LOGGER.debug("Adding users and groups to task service");
 		target.addUsersAndGroups(users, groups);

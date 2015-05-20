@@ -1,9 +1,10 @@
 package org.lunifera.bpm.drools.common.server;
 
 import org.drools.KnowledgeBase;
+import org.drools.command.Command;
 import org.drools.io.ResourceFactoryService;
+import org.drools.runtime.StatefulKnowledgeSession;
 import org.lunifera.bpm.drools.common.server.commands.IKnowledgeBaseCommand;
-import org.lunifera.bpm.drools.common.server.commands.IStatefulSessionCommand;
 import org.lunifera.bpm.drools.common.server.commands.ITaskServiceCommand;
 
 /**
@@ -43,9 +44,23 @@ public interface IBPMService {
 	 * Executes the given command.
 	 * 
 	 * @param command
+	 * @param disposeSession
+	 *            true, if the created session should be disposed
 	 */
-	void execute(IStatefulSessionCommand command);
+	public <M> M execute(final Command<M> command, boolean disposeSession);
 
+	/**
+	 * Creates a new drools session.
+	 * 
+	 * @return
+	 */
 	IDroolsSession createSession();
+
+	/**
+	 * Creates a new task client.
+	 * 
+	 * @return
+	 */
+	public org.jbpm.task.TaskService createTaskClient();
 
 }

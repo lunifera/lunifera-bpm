@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: org.lunifera.bpm.drools.jpa
 Bundle-SymbolicName: org.lunifera.bpm.drools.jpa
-Bundle-Version: 0.1.0.qualifier
+Bundle-Version: 0.9.1.qualifier
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Import-Package: javax.persistence;version="2.1.0",
  javax.persistence.spi;version="2.1.0",
@@ -23,6 +23,6 @@ Require-Bundle: org.eclipse.gemini.dbaccess.util;bundle-version="1.1.0",
  org.eclipse.persistence.jpa;bundle-version="2.5.1",
  org.apache.commons.logging;bundle-version="1.1.1",
  org.lunifera.drools.allinone;bundle-version="5.5.1",
- org.lunifera.bpm.drools.common;bundle-version="0.1.0"
+ org.lunifera.bpm.drools.common;bundle-version="[0.9.1,0.10.0)"
 Meta-Persistence: META-INF/persistence.xml
 Bundle-Vendor: Lunifera GmbH

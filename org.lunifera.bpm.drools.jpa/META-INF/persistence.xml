@@ -57,8 +57,9 @@
 		<exclude-unlisted-classes>false</exclude-unlisted-classes>
 
 		<properties>
+			<property name="javax.persistence.lock.timeout" value="100"/>
 			<property name="eclipselink.target-server"
-				value="org.lunifera.eclipselink.core.fragment.LuniferaPlatform" />
+				value="org.lunifera.runtime.eclipselink.core.fragment.LuniferaPlatform" />
 			<property name="eclipselink.target-database" value="Derby" />
 			<property name="javax.persistence.jdbc.driver" value="org.apache.derby.jdbc.EmbeddedDriver" />
 			<property name="javax.persistence.jdbc.url" value="jdbc:derby:carstoreDB;create=true" />
@@ -74,7 +75,7 @@
 				value="1" />
 			<property name="eclipselink.jdbc.write-connections.min"
 				value="1" />
-
+	
 			<!-- EclipseLink should create the database schema automatically -->
 			<property name="eclipselink.ddl-generation" value="drop-and-create-tables" />
 			<property name="eclipselink.create-ddl-jdbc-file-name"
@@ -83,7 +84,7 @@
 			<property name="eclipselink.ddl-generation.output-mode"
 				value="both" />
 
-			<property name="eclipselink.weaving" value="static" />
+<!-- 			<property name="eclipselink.weaving" value="static" /> -->
 		</properties>
 	</persistence-unit>
 </persistence>

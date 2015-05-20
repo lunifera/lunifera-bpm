@@ -2,7 +2,6 @@ package org.lunifera.bpm.drools.ui.vaadin;
 
 import java.util.List;
 
-import org.lunifera.bpm.drools.common.server.IBPMService;
 import org.lunifera.ecview.core.common.context.I18nUtil;
 import org.lunifera.ecview.core.common.context.II18nService;
 import org.lunifera.runtime.web.vaadin.common.data.INestedPropertyAble;
@@ -17,17 +16,16 @@ import com.vaadin.ui.UI;
 @SuppressWarnings("serial")
 public abstract class AbstractBPMField<M> extends CustomField<M> {
 
-	protected final IBPMService bpmService;
 	protected final II18nService i18nService;
 	protected final IResourceProvider resourceProvider;
+	protected final boolean createButtonBar;
 	protected Table table;
 
-	public AbstractBPMField(IBPMService bpmService, II18nService i18nService,
-			IResourceProvider resourceProvider) {
-		super();
-		this.bpmService = bpmService;
+	public AbstractBPMField(II18nService i18nService,
+			IResourceProvider resourceProvider, boolean createButtonbar) {
 		this.i18nService = i18nService;
 		this.resourceProvider = resourceProvider;
+		this.createButtonBar = createButtonbar;
 	}
 
 	/**
@@ -79,7 +77,8 @@ public abstract class AbstractBPMField<M> extends CustomField<M> {
 			imageURL = fqnColumnId;
 		}
 
-		return imageURL == null ? null : resourceProvider.getResource(imageURL);
+		return imageURL == null || imageURL.equals("") ? null
+				: resourceProvider.getResource(imageURL);
 	}
 
 	protected int getExpandRatio(String fqnColumnId) {
@@ -109,16 +108,14 @@ public abstract class AbstractBPMField<M> extends CustomField<M> {
 	 * @return
 	 */
 	protected String getColumnHeader(String column) {
-		String result = null;
-		if (i18nService != null) {
-			result = i18nService.getValue(toFqnColumnId(column), getLocale());
-		}
-
-		if (result == null || result.equals("")) {
-			result = column;
-		}
-
-		return result;
+		return translate(column);
 	}
 
+	protected String translate(String i18nKey) {
+		if (i18nService != null) {
+			return i18nService.getValue(i18nKey, getLocale());
+		} else {
+			return i18nKey;
+		}
+	}
 }

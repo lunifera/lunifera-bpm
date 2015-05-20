@@ -3,7 +3,6 @@ package org.lunifera.bpm.drools.common.server.commands;
 import org.jbpm.task.identity.UserGroupCallback;
 import org.jbpm.task.identity.UserGroupCallbackManager;
 import org.jbpm.task.service.TaskService;
-import org.lunifera.bpm.drools.common.server.IBPMService;
 
 public class SetUserGroupCallbackCommand implements ITaskServiceCommand {
 
@@ -15,7 +14,7 @@ public class SetUserGroupCallbackCommand implements ITaskServiceCommand {
 	}
 
 	@Override
-	public void execute(TaskService target, IBPMService service) {
+	public void execute(TaskService target) {
 		UserGroupCallbackManager.getInstance().setCallback(callback);
 	}
 
