@@ -18,8 +18,8 @@
 		<version>0.12.5-SNAPSHOT</version>
 	</parent>
 
-	<groupId>org.lunifera.bpmn</groupId>
-	<artifactId>org.lunifera.bpmn</artifactId>
+	<groupId>org.lunifera.bpm</groupId>
+	<artifactId>org.lunifera.bpm</artifactId>
 	<packaging>pom</packaging>
 
 	<url>${distribution.site.url}</url>
@@ -32,17 +32,20 @@
 	</distributionManagement>
 
 	<modules>
-		<module>org.lunifera.bpm.vaadin.bpmnio</module>
-		<module>org.lunifera.bpm.vaadin.bpmnio.sample</module>
 		<module>org.lunifera.bpm.drools.common</module>
 		<module>org.lunifera.bpm.drools.engine</module>
-		<module>org.lunifera.bpm.drools.tasks.server</module>
-		<module>org.lunifera.bpm.drools.kbase.extender</module>
-		<module>org.lunifera.bpm.drools.ui.vaaclipse</module>
-		<module>org.lunifera.bpm.drools.ui.vaadin</module>
 		<module>org.lunifera.bpm.drools.jpa</module>
+		<module>org.lunifera.bpm.drools.kbase.extender</module>
 		<module>org.lunifera.bpm.drools.sample.vaadin</module>
 		<module>org.lunifera.bpm.drools.sample.vaadin.bootstrap</module>
+		<module>org.lunifera.bpm.drools.tasks.server</module>
+		<module>org.lunifera.bpm.drools.ui.vaaclipse</module>
+		<module>org.lunifera.bpm.drools.ui.vaadin</module>
+		<module>org.lunifera.bpm.vaadin.bpmnio</module>
+		<module>org.lunifera.bpm.vaadin.bpmnio.sample</module>
+
+		<module>org.lunifera.bpm.feature</module>
+		<module>org.lunifera.bpm.p2</module>
 	</modules>
 
 	<profiles>
@@ -54,7 +57,7 @@
 				</property>
 			</activation>
 			<modules>
-				<module>org.lunifera.bpmn.p2</module>
+				<module>org.lunifera.bpm.p2</module>
 			</modules>
 		</profile>
 
@@ -64,7 +67,7 @@
 				<activeByDefault>false</activeByDefault>
 			</activation>
 			<modules>
-				<module>org.lunifera.bpmn.p2</module>
+				<module>org.lunifera.bpm.p2</module>
 			</modules>
 		</profile>
 	</profiles>

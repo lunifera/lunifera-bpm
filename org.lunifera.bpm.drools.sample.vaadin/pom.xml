@@ -16,9 +16,9 @@
 		<artifactId>org.lunifera.bpm</artifactId>
 		<version>0.9.1-SNAPSHOT</version>
 	</parent>
-	<artifactId>org.lunifera.bpm.drools.ui.vaadin</artifactId>
+	<artifactId>org.lunifera.bpm.drools.sample.vaadin</artifactId>
 	<packaging>eclipse-plugin</packaging>
-	<name>Lunifera JBPM engine - UI for Vaadin</name>
+	<name>Lunifera Mina Task Server</name>
 
 	<build>
 		<plugins>
