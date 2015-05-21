@@ -15,9 +15,9 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.core.databinding.observable;bundle-version="1.4.1",
  org.eclipse.core.databinding.property;bundle-version="1.4.200",
  org.lunifera.runtime.web.vaadin.databinding;bundle-version="0.9.1",
- org.lunifera.bpm.drools.ui.vaadin;bundle-version="0.1.0",
- org.lunifera.ecview.core.common,
- org.lunifera.runtime.web.vaadin.common,
+ org.lunifera.bpm.drools.ui.vaadin;bundle-version="0.9.1",
+ org.lunifera.ecview.core.common;bundle-version="0.9.1",
+ org.lunifera.runtime.web.vaadin.common;bundle-version="0.9.1",
  org.lunifera.runtime.common;bundle-version="0.9.1"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy

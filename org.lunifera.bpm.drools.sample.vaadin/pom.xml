@@ -18,7 +18,7 @@
 	</parent>
 	<artifactId>org.lunifera.bpm.drools.sample.vaadin</artifactId>
 	<packaging>eclipse-plugin</packaging>
-	<name>Lunifera Mina Task Server</name>
+	<name>Lunifera BPM sample - Vaadin</name>
 
 	<build>
 		<plugins>
@@ -26,8 +26,19 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<configuration>
-					<source>1.7</source>
-					<target>1.7</target>
+					<source>1.8</source>
+					<target>1.8</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-compiler-plugin</artifactId>
+				<version>0.21.0</version>
+				<configuration>
+					<compilerVersion>1.8</compilerVersion>
+					<encoding>UTF-8</encoding>
+					<source>1.8</source>
+					<target>1.8</target>
 				</configuration>
 			</plugin>
 			<plugin>

@@ -41,8 +41,8 @@
 		<module>org.lunifera.bpm.drools.tasks.server</module>
 		<module>org.lunifera.bpm.drools.ui.vaaclipse</module>
 		<module>org.lunifera.bpm.drools.ui.vaadin</module>
-		<module>org.lunifera.bpm.vaadin.bpmnio</module>
-		<module>org.lunifera.bpm.vaadin.bpmnio.sample</module>
+<!-- 		<module>org.lunifera.bpm.vaadin.bpmnio</module> -->
+<!-- 		<module>org.lunifera.bpm.vaadin.bpmnio.sample</module> -->
 
 		<module>org.lunifera.bpm.feature</module>
 		<module>org.lunifera.bpm.p2</module>
