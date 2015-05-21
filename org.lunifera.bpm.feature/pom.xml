@@ -15,7 +15,7 @@
 		<groupId>org.lunifera.bpm</groupId>
 		<artifactId>org.lunifera.bpm</artifactId>
 		<version>0.9.1-SNAPSHOT</version>
-		<relativePath>../org.lunifera.runtime.parent/pom.xml</relativePath>
+		<relativePath>..</relativePath>
 	</parent>
 
 	<artifactId>org.lunifera.bpm.feature</artifactId>
