@@ -1,4 +1,4 @@
-package org.lunifera.bpm.drools.sample.vaadin;
+package org.lunifera.bpm.drools.sample.vaadin.bootstrap;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -106,12 +106,6 @@ public class BPMServiceSetup {
 	}
 
 	private void runProcess() {
-		// Map<String, Object> params = new HashMap<String, Object>();
-		// params.put("userId", "krisv");
-		// params.put("description", "Need a new laptop computer");
-		// StartProcessCommand command = new StartProcessCommand(
-		// "org.lunifera.bpmn.sample", params, true);
-		// service.execute(command);
 	}
 
 	/**
@@ -124,6 +118,12 @@ public class BPMServiceSetup {
 				.newKnowledgeBuilder();
 		kbuilder.add(ResourceFactory.newClassPathResource(
 				"files/MyFirstProcess.bpmn2", getClass().getClassLoader()),
+				ResourceType.BPMN2);
+		kbuilder.add(ResourceFactory.newClassPathResource(
+				"files/HumanTask.bpmn", getClass().getClassLoader()),
+				ResourceType.BPMN2);
+		kbuilder.add(ResourceFactory.newClassPathResource(
+				"files/HelloMister.bpmn2", getClass().getClassLoader()),
 				ResourceType.BPMN2);
 
 		// create a setup command and execute

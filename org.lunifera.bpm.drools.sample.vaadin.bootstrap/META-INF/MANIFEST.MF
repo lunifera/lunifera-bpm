@@ -3,7 +3,9 @@ Bundle-ManifestVersion: 2
 Bundle-Name: org.lunifera.bpm.drools.sample.vaadin.bootstrap
 Bundle-SymbolicName: org.lunifera.bpm.drools.sample.vaadin.bootstrap
 Bundle-Version: 0.9.1.qualifier
-Require-Bundle: org.eclipse.core.runtime
+Require-Bundle: org.eclipse.core.runtime,
+ org.lunifera.bpm.drools.common,
+ org.lunifera.drools.allinone56
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Import-Package: org.osgi.service.component;version="1.1.0",
@@ -11,4 +13,5 @@ Import-Package: org.osgi.service.component;version="1.1.0",
  org.osgi.service.http;version="1.2.1",
  org.osgi.service.jdbc;version="1.0.0",
  org.osgi.service.jndi
-Service-Component: OSGI-INF/org.lunifera.bpm.drools.sample.vaadin.bootstrap.DatasourceComponent.xml
+Service-Component: OSGI-INF/org.lunifera.bpm.drools.sample.vaadin.bootstrap.DatasourceComponent.xml,
+ OSGI-INF/org.lunifera.bpm.drools.sample.vaadin.bootstrap.BPMServiceSetup.xml

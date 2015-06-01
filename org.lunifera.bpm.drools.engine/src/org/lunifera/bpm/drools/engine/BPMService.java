@@ -191,17 +191,60 @@ public class BPMService implements IBPMService {
 
 	public IDroolsSession createSession() {
 
-		StatefulKnowledgeSession ksession;
 		// create a new knowledge session that uses JPA to store the runtime
 		// state
-		ksession = JPAKnowledgeService.newStatefulKnowledgeSession(kbase,
-				kieSessionConfig, env);
+		StatefulKnowledgeSession ksession = JPAKnowledgeService
+				.newStatefulKnowledgeSession(kbase, kieSessionConfig, env);
 		DroolsSession kSession = new DroolsSession(ksession);
 
-		// MinaHTWorkItemHandler humanTaskHandler = new MinaHTWorkItemHandler(
-		// ksession);
-		// ksession.getWorkItemManager().registerWorkItemHandler("Human Task",
-		// humanTaskHandler);
+		LocalTaskService client = new LocalTaskService(
+				new org.jbpm.task.service.TaskService(emf,
+						SystemEventListenerFactory.getSystemEventListener()));
+		client.connect();
+		final org.lunifera.bpm.drools.common.tasks.handler.LocalHTWorkItemHandler taskHandler = new org.lunifera.bpm.drools.common.tasks.handler.LocalHTWorkItemHandler(
+				client, ksession);
+		ksession.getWorkItemManager().registerWorkItemHandler("Human Task",
+				taskHandler);
+		ksession.getWorkItemManager().registerWorkItemHandler("HelloMister",
+				new WorkItemHandler() {
+					@Override
+					public void executeWorkItem(WorkItem workItem,
+							WorkItemManager manager) {
+						System.out.println("Executed");
+//						manager.completeWorkItem(workItem.getId(), null);
+					}
+
+					@Override
+					public void abortWorkItem(WorkItem workItem,
+							WorkItemManager manager) {
+						System.out.println("Aborted");
+					}
+				});
+		taskHandler.connect();
+
+		kSession.registerDisposal(new IDroolsSession.DroolsDisposeable() {
+			@Override
+			public void dispose() {
+				try {
+					taskHandler.dispose();
+				} catch (Exception e) {
+					LOGGER.warn(e.getMessage());
+				}
+			}
+		});
+
+		return kSession;
+	}
+
+	@Override
+	public IDroolsSession loadSession(int sessionId) {
+
+		// create a new knowledge session that uses JPA to store the runtime
+		// state
+		StatefulKnowledgeSession ksession = JPAKnowledgeService
+				.loadStatefulKnowledgeSession(sessionId, kbase,
+						kieSessionConfig, env);
+		DroolsSession kSession = new DroolsSession(ksession);
 
 		LocalTaskService client = new LocalTaskService(
 				new org.jbpm.task.service.TaskService(emf,
@@ -240,6 +283,7 @@ public class BPMService implements IBPMService {
 		});
 
 		return kSession;
+
 	}
 
 	private boolean isActive() {
@@ -285,4 +329,5 @@ public class BPMService implements IBPMService {
 						SystemEventListenerFactory.getSystemEventListener()))));
 		return client;
 	}
+
 }

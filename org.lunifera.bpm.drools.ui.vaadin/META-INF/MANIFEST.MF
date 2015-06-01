@@ -5,8 +5,9 @@ Bundle-SymbolicName: org.lunifera.bpm.drools.ui.vaadin
 Bundle-Version: 0.9.1.qualifier
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Import-Package: org.osgi.framework;version="1.7.0",
+ org.osgi.service.event;version="1.2.0",
  org.slf4j;resolution:=optional
-Require-Bundle: org.lunifera.drools.allinone;bundle-version="5.5.1",
+Require-Bundle: org.lunifera.drools.allinone56;bundle-version="5.5.1",
  org.lunifera.bpm.drools.common;bundle-version="0.1.0",
  com.vaadin.server;bundle-version="[7.3.8,7.4.0)",
  com.vaadin.shared;bundle-version="[7.3.8,7.4.0)",

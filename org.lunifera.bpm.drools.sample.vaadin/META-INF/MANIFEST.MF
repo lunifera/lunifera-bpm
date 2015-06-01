@@ -6,7 +6,7 @@ Bundle-Version: 0.9.1.qualifier
 Bundle-Activator: org.lunifera.bpm.drools.sample.vaadin.Activator
 Require-Bundle: org.eclipse.core.runtime,
  org.lunifera.bpm.drools.common,
- org.lunifera.drools.allinone,
+ org.lunifera.drools.allinone56,
  javax.servlet,
  com.vaadin.server,
  org.json;bundle-version="0.0.20080701",

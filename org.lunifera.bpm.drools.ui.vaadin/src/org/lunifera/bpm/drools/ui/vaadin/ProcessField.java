@@ -10,7 +10,7 @@ import org.lunifera.bpm.drools.ui.vaadin.container.ProcessContainer;
 import org.lunifera.ecview.core.common.context.II18nService;
 import org.lunifera.runtime.web.vaadin.common.resource.IResourceProvider;
 
-import com.vaadin.event.ItemClickEvent;
+import com.vaadin.data.Property;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.Component;
@@ -63,11 +63,11 @@ public class ProcessField extends
 		applyColumns(Arrays.asList("name", "version", "packageName", "type",
 				"namespace", "id"));
 
-		table.addItemClickListener(new ItemClickEvent.ItemClickListener() {
+		table.addValueChangeListener(new Property.ValueChangeListener() {
 			@Override
-			public void itemClick(ItemClickEvent event) {
-				Process itemId = (Process) event.getItemId();
-				ProcessField.this.setInternalValue(itemId);
+			public void valueChange(
+					com.vaadin.data.Property.ValueChangeEvent event) {
+				ProcessField.this.setValue((Process) table.getValue(), false);
 			}
 		});
 
@@ -126,6 +126,10 @@ public class ProcessField extends
 		StartProcessCommand command = new StartProcessCommand(getValue()
 				.getId(), data, null);
 		bpmService.execute(command, true);
+	}
+
+	public void refresh() {
+		container.reload();
 	}
 
 }

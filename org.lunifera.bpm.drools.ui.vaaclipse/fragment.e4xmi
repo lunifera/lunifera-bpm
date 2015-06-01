@@ -6,6 +6,8 @@
     <elements xsi:type="commands:Command" xmi:id="_ftnjwP10EeSRwa39RdVPrg" elementId="org.lunifera.bpm.drools.ui.vaaclipse.command.completeTask" commandName="Complete Task" description="Complete Task"/>
     <elements xsi:type="commands:Command" xmi:id="_jkDp0P10EeSRwa39RdVPrg" elementId="org.lunifera.bpm.drools.ui.vaaclipse.command.openUiForTask" commandName="Open Ui for Task" description="Open Ui for Task"/>
     <elements xsi:type="commands:Command" xmi:id="_m9IecP10EeSRwa39RdVPrg" elementId="org.lunifera.bpm.drools.ui.vaaclipse.command.startProcess" commandName="Start Process" description="Start Process"/>
+    <elements xsi:type="commands:Command" xmi:id="_0G4pMP8EEeSWUuDyCBg7hw" elementId="org.lunifera.bpm.drools.ui.vaaclipse.command.refreshProcessView" commandName="Refresh Process View" description="Refresh Process View"/>
+    <elements xsi:type="commands:Command" xmi:id="_258msP8EEeSWUuDyCBg7hw" elementId="org.lunifera.bpm.drools.ui.vaaclipse.command.refreshTaskView" commandName="Refresh Task View" description="Refresh Task View"/>
   </fragments>
   <fragments xsi:type="fragment:StringModelFragment" xmi:id="_wTGhAMdKEeS1P7t7bKAKuw" featurename="handlers" parentElementId="org.lunifera.vaaclipse.addons.application">
     <elements xsi:type="commands:Handler" xmi:id="_q4uxUP10EeSRwa39RdVPrg" elementId="org.lunifera.bpm.drools.ui.vaaclipse.handler.claimTask" contributionURI="bundleclass://org.lunifera.bpm.drools.ui.vaaclipse/org.lunifera.bpm.drools.ui.vaaclipse.handler.ClaimTaskHandler" command="_Zh3zMP10EeSRwa39RdVPrg"/>
@@ -13,13 +15,16 @@
     <elements xsi:type="commands:Handler" xmi:id="_5Jm18P10EeSRwa39RdVPrg" elementId="org.lunifera.bpm.drools.ui.vaaclipse.handler.completeTask" contributionURI="bundleclass://org.lunifera.bpm.drools.ui.vaaclipse/org.lunifera.bpm.drools.ui.vaaclipse.handler.CompleteTaskHandler" command="_ftnjwP10EeSRwa39RdVPrg"/>
     <elements xsi:type="commands:Handler" xmi:id="_5L5U8P10EeSRwa39RdVPrg" elementId="org.lunifera.bpm.drools.ui.vaaclipse.handler.openUiForTask" contributionURI="bundleclass://org.lunifera.bpm.drools.ui.vaaclipse/org.lunifera.bpm.drools.ui.vaaclipse.handler.OpenUiForTaskHandler" command="_jkDp0P10EeSRwa39RdVPrg"/>
     <elements xsi:type="commands:Handler" xmi:id="_5VDQ8P10EeSRwa39RdVPrg" elementId="org.lunifera.bpm.drools.ui.vaaclipse.handler.startProcess" contributionURI="bundleclass://org.lunifera.bpm.drools.ui.vaaclipse/org.lunifera.bpm.drools.ui.vaaclipse.handler.StartProcessHandler" command="_m9IecP10EeSRwa39RdVPrg"/>
+    <elements xsi:type="commands:Handler" xmi:id="_42YeMP8EEeSWUuDyCBg7hw" elementId="org.lunifera.bpm.drools.ui.vaaclipse.handler.refreshTaskView" contributionURI="bundleclass://org.lunifera.bpm.drools.ui.vaaclipse/org.lunifera.bpm.drools.ui.vaaclipse.handler.RefreshTasksHandler" command="_258msP8EEeSWUuDyCBg7hw"/>
+    <elements xsi:type="commands:Handler" xmi:id="_8FvWIP8EEeSWUuDyCBg7hw" elementId="org.lunifera.bpm.drools.ui.vaaclipse.handler.refreshProcessView" contributionURI="bundleclass://org.lunifera.bpm.drools.ui.vaaclipse/org.lunifera.bpm.drools.ui.vaaclipse.handler.RefreshProcessesHandler" command="_0G4pMP8EEeSWUuDyCBg7hw"/>
   </fragments>
   <fragments xsi:type="fragment:StringModelFragment" xmi:id="_ieGRoM-xEeSscMz1WjkrfA" featurename="descriptors" parentElementId="org.lunifera.vaaclipse.addons.application">
     <elements xsi:type="basic:PartDescriptor" xmi:id="_VG-MkM--EeSqGowmJdFaKQ" elementId="org.lunifera.bpm.drools.ui.vaaclipse.partdescriptor.processes" label="Bpm Processes" iconURI="platform:/plugin/org.lunifera.bpm.drools.ui.vaaclipse/images/process.png" tooltip="Shows all Bpm Processes" category="org.lunifera.vaaclipse.addons.application.partstack.main" closeable="true" contributionURI="bundleclass://org.lunifera.bpm.drools.ui.vaaclipse/org.lunifera.bpm.drools.ui.vaaclipse.ProcessView">
       <persistedState key="ecview.viewId" value="org.lunifera.vaaclipse.addons.extension.system.DatasourceDetails"/>
       <tags>View</tags>
       <toolbar xmi:id="_e0UXcM_FEeSqGowmJdFaKQ" elementId="org.lunifera.bpm.drools.ui.vaaclipse.partdescriptor.processes.toolbar">
-        <children xsi:type="menu:HandledToolItem" xmi:id="_FMsNUP11EeSRwa39RdVPrg" elementId="org.lunifera.bpm.drools.ui.vaaclipse.handledtoolitem.claim" label="Start" command="_m9IecP10EeSRwa39RdVPrg"/>
+        <children xsi:type="menu:HandledToolItem" xmi:id="_FMsNUP11EeSRwa39RdVPrg" elementId="org.lunifera.bpm.drools.ui.vaaclipse.handledtoolitem.startProcess" label="Start" command="_m9IecP10EeSRwa39RdVPrg"/>
+        <children xsi:type="menu:HandledToolItem" xmi:id="_BQyesP8FEeSWUuDyCBg7hw" elementId="org.lunifera.bpm.drools.ui.vaaclipse.handledtoolitem.refreshProcessView" label="Refresh" command="_0G4pMP8EEeSWUuDyCBg7hw"/>
       </toolbar>
     </elements>
     <elements xsi:type="basic:PartDescriptor" xmi:id="_PGVocP10EeSRwa39RdVPrg" elementId="org.lunifera.bpm.drools.ui.vaaclipse.partdescriptor.tasks" label="Bpm Tasks" iconURI="platform:/plugin/org.lunifera.bpm.drools.ui.vaaclipse/images/tasks.png" tooltip="Shows all Bpm Tasks" category="org.lunifera.vaaclipse.addons.application.partstack.main" closeable="true" contributionURI="bundleclass://org.lunifera.bpm.drools.ui.vaaclipse/org.lunifera.bpm.drools.ui.vaaclipse.TaskView">
@@ -30,6 +35,7 @@
         <children xsi:type="menu:HandledToolItem" xmi:id="_HWtN0P11EeSRwa39RdVPrg" elementId="org.lunifera.bpm.drools.ui.vaaclipse.handledtoolitem.startTask" label="Start" command="_eP1-MP10EeSRwa39RdVPrg"/>
         <children xsi:type="menu:HandledToolItem" xmi:id="_NUzj8P11EeSRwa39RdVPrg" elementId="org.lunifera.bpm.drools.ui.vaaclipse.handledtoolitem.completeTask" label="Complete" command="_ftnjwP10EeSRwa39RdVPrg"/>
         <children xsi:type="menu:HandledToolItem" xmi:id="_PeEWgP11EeSRwa39RdVPrg" elementId="org.lunifera.bpm.drools.ui.vaaclipse.handledtoolitem.openUiForTask" label="Open UI" command="_jkDp0P10EeSRwa39RdVPrg"/>
+        <children xsi:type="menu:HandledToolItem" xmi:id="_H_PTsP8FEeSWUuDyCBg7hw" elementId="org.lunifera.bpm.drools.ui.vaaclipse.handledtoolitem.refreshTaskView" label="Refresh" command="_258msP8EEeSWUuDyCBg7hw"/>
       </toolbar>
     </elements>
   </fragments>

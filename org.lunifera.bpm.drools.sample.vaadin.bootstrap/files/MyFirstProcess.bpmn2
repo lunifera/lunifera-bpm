@@ -12,7 +12,7 @@
              xmlns:di="http://www.omg.org/spec/DD/20100524/DI"
              xmlns:tns="http://www.jboss.org/drools">
 
-  <itemDefinition id="_inputType" structureRef="String" />
+  <itemDefinition id="null" />
 
   <process processType="Private" isExecutable="true" id="lunifera.MyFirstProcess" name="MyFirstProcess" tns:packageName="lunifera" tns:version="1" >
 
@@ -132,34 +132,34 @@
   <bpmndi:BPMNDiagram>
     <bpmndi:BPMNPlane bpmnElement="lunifera.MyFirstProcess" >
       <bpmndi:BPMNShape bpmnElement="StartEvent_1" >
-        <dc:Bounds x="129" y="174" width="48" height="48" />
+        <dc:Bounds x="16" y="17" width="48" height="48" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="EndEvent_1" >
-        <dc:Bounds x="684" y="174" width="48" height="48" />
+        <dc:Bounds x="380" y="17" width="48" height="48" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="UserTask_1" >
-        <dc:Bounds x="520" y="173" width="110" height="50" />
+        <dc:Bounds x="238" y="16" width="110" height="50" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape bpmnElement="Task_1" >
-        <dc:Bounds x="268" y="173" width="110" height="50" />
+        <dc:Bounds x="96" y="16" width="110" height="50" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge bpmnElement="UserTask_1-EndEvent_1" >
-        <di:waypoint x="575" y="198" />
+        <di:waypoint x="293" y="41" />
         <di:waypoint x="660" y="198" />
         <di:waypoint x="690" y="198" />
-        <di:waypoint x="708" y="198" />
+        <di:waypoint x="404" y="41" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="Task_1-UserTask_1" >
-        <di:waypoint x="323" y="198" />
+        <di:waypoint x="151" y="41" />
         <di:waypoint x="415" y="198" />
         <di:waypoint x="520" y="198" />
-        <di:waypoint x="575" y="198" />
+        <di:waypoint x="293" y="41" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge bpmnElement="StartEvent_1-Task_1" >
-        <di:waypoint x="153" y="198" />
+        <di:waypoint x="40" y="41" />
         <di:waypoint x="185" y="198" />
         <di:waypoint x="268" y="198" />
-        <di:waypoint x="323" y="198" />
+        <di:waypoint x="151" y="41" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>

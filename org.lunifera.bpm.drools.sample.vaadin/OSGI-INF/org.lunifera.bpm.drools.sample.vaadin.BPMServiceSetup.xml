@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0" activate="activate" deactivate="deactivate" immediate="true" name="org.lunifera.bpm.drools.sample.vaadin.BPMServiceSetup">
-   <implementation class="org.lunifera.bpm.drools.sample.vaadin.BPMServiceSetup"/>
-   <reference bind="bindBpmService" cardinality="1..1" interface="org.lunifera.bpm.drools.common.server.IBPMService" name="bpmService" policy="static" unbind="unbindBpmService"/>
-</scr:component>

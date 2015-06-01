@@ -5,13 +5,9 @@
                  version="1.0">
       <named-query name="ProcessInstancesWaitingForEvent">
           <query>
-select 
-    processInstanceInfo.processInstanceId
-from 
-    ProcessInstanceInfo processInstanceInfo join processInstanceInfo.eventTypes eventTypes
-where
-    eventTypes = :type
+			select processInstanceInfo.processInstanceId
+			from ProcessInstanceInfo processInstanceInfo join processInstanceInfo.eventTypes eventTypes
+			where eventTypes = :type
           </query>
       </named-query>
-      
 </entity-mappings>

@@ -10,38 +10,24 @@
  */
 package org.lunifera.bpm.drools.ui.vaaclipse.handler;
 
-import javax.inject.Inject;
-import javax.inject.Named;
-
 import org.eclipse.e4.core.contexts.Active;
-import org.eclipse.e4.core.contexts.IEclipseContext;
 import org.eclipse.e4.core.di.annotations.CanExecute;
 import org.eclipse.e4.core.di.annotations.Execute;
 import org.eclipse.e4.core.di.annotations.Optional;
-import org.jbpm.task.Status;
-import org.jbpm.task.TaskService;
+import org.eclipse.e4.ui.model.application.ui.basic.MPart;
 import org.jbpm.task.query.TaskSummary;
+import org.lunifera.bpm.drools.ui.vaaclipse.ProcessView;
 
-public class StartTaskHandler {
-
-	@Inject
-	private TaskService taskClient;
-
-	@Inject
-	@Named("user")
-	@Optional
-	String userId;
+public class RefreshProcessesHandler {
 
 	@Execute
-	public void execute(TaskSummary taskSummary, @Active IEclipseContext context) {
-		taskClient.start(taskSummary.getId(), userId);
+	public void execute(@Active MPart part) {
+		ProcessView view = (ProcessView) part.getObject();
+		view.refresh();
 	}
 
 	@CanExecute
 	public boolean canExecute(@Optional TaskSummary taskSummary) {
-		if (taskSummary == null) {
-			return false;
-		}
-		return taskSummary.getStatus() == Status.Created || taskSummary.getStatus() == Status.Ready;
+		return true;
 	}
 }

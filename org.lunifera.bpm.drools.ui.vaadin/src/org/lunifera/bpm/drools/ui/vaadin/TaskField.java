@@ -3,21 +3,14 @@ package org.lunifera.bpm.drools.ui.vaadin;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
-import java.util.UUID;
 
-import org.drools.SystemEventListenerFactory;
-import org.drools.runtime.StatefulKnowledgeSession;
 import org.jbpm.task.TaskService;
 import org.jbpm.task.query.TaskSummary;
-import org.jbpm.task.service.SyncTaskServiceWrapper;
-import org.jbpm.task.service.TaskClient;
-import org.jbpm.task.service.mina.MinaTaskClientConnector;
-import org.jbpm.task.service.mina.MinaTaskClientHandler;
 import org.lunifera.ecview.core.common.context.II18nService;
 import org.lunifera.runtime.web.vaadin.common.data.DeepResolvingBeanItemContainer;
 import org.lunifera.runtime.web.vaadin.common.resource.IResourceProvider;
 
-import com.vaadin.event.ItemClickEvent;
+import com.vaadin.data.Property;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.Button.ClickEvent;
 import com.vaadin.ui.Component;
@@ -28,10 +21,11 @@ import com.vaadin.ui.VerticalLayout;
 @SuppressWarnings("serial")
 public class TaskField extends AbstractBPMField<TaskSummary> {
 
+	public static final String EVENT_SELECTED_TASK = "lunifera/task/selected";
+
+	private final TaskService taskService;
 	private DeepResolvingBeanItemContainer<TaskSummary> container;
 	private VerticalLayout mainLayout;
-	private TaskService client;
-	private StatefulKnowledgeSession ksession;
 	private HorizontalLayout buttonBar;
 	private Button claimButton;
 	private Button activateButton;
@@ -40,14 +34,15 @@ public class TaskField extends AbstractBPMField<TaskSummary> {
 	private Button resumeButton;
 	private Button refreshTableButton;
 
-	public TaskField(II18nService i18nService,
+	public TaskField(TaskService taskService, II18nService i18nService,
 			IResourceProvider resourceProvider) {
-		this(i18nService, resourceProvider, true);
+		this(taskService, i18nService, resourceProvider, true);
 	}
 
-	public TaskField(II18nService i18nService,
+	public TaskField(TaskService taskService, II18nService i18nService,
 			IResourceProvider resourceProvider, boolean createButtonbar) {
 		super(i18nService, resourceProvider, createButtonbar);
+		this.taskService = taskService;
 	}
 
 	@Override
@@ -74,28 +69,11 @@ public class TaskField extends AbstractBPMField<TaskSummary> {
 				"priority", "skipable", "actualOwner.id", "createdBy.id",
 				"createdOn", "id"));
 
-		// ServiceReference<EntityManagerFactory> ref = FrameworkUtil
-		// .getBundle(getClass()).getBundleContext()
-		// .getServiceReference(EntityManagerFactory.class);
-		// EntityManagerFactory emf = FrameworkUtil.getBundle(getClass())
-		// .getBundleContext().getService(ref);
-
-		// client = new LocalTaskService(new org.jbpm.task.service.TaskService(
-		// emf, SystemEventListenerFactory.getSystemEventListener()));
-		// LocalHTWorkItemHandler handler = new LocalHTWorkItemHandler(client,
-		// ksession, OnErrorAction.RETHROW);
-		// handler.connect();
-		client = new SyncTaskServiceWrapper(new TaskClient(
-				new MinaTaskClientConnector(UUID.randomUUID().toString(),
-						new MinaTaskClientHandler(
-								SystemEventListenerFactory
-										.getSystemEventListener()))));
-		client.connect();
-
-		table.addItemClickListener(new ItemClickEvent.ItemClickListener() {
+		table.addValueChangeListener(new Property.ValueChangeListener() {
 			@Override
-			public void itemClick(ItemClickEvent event) {
-				setInternalValue((TaskSummary) event.getItemId());
+			public void valueChange(
+					com.vaadin.data.Property.ValueChangeEvent event) {
+				TaskField.this.setValue((TaskSummary) table.getValue(), false);
 			}
 		});
 
@@ -190,7 +168,7 @@ public class TaskField extends AbstractBPMField<TaskSummary> {
 	@Override
 	public void detach() {
 		try {
-			client.disconnect();
+			taskService.disconnect();
 		} catch (Exception e) {
 		}
 
@@ -200,7 +178,7 @@ public class TaskField extends AbstractBPMField<TaskSummary> {
 	protected void loadTasks() {
 		container.removeAllItems();
 
-		List<TaskSummary> tasks = client
+		List<TaskSummary> tasks = taskService
 				.getTasksAssignedAsBusinessAdministrator("Administrator",
 						"en-UK");
 
@@ -229,31 +207,31 @@ public class TaskField extends AbstractBPMField<TaskSummary> {
 	}
 
 	public void activate(String userId) {
-		client.activate(getValue().getId(), userId);
+		taskService.activate(getValue().getId(), userId);
 
 		refresh();
 	}
 
 	public void claim(String userId) {
-		client.claim(getValue().getId(), userId);
+		taskService.claim(getValue().getId(), userId);
 
 		refresh();
 	}
 
 	public void start(String userId) {
-		client.start(getValue().getId(), userId);
+		taskService.start(getValue().getId(), userId);
 
 		refresh();
 	}
 
 	public void complete(String userId, HashMap<String, Object> data) {
-		client.complete(getValue().getId(), userId, null);
+		taskService.complete(getValue().getId(), userId, null);
 
 		refresh();
 	}
 
 	public void resume(String userId) {
-		client.resume(getValue().getId(), userId);
+		taskService.resume(getValue().getId(), userId);
 
 		refresh();
 	}

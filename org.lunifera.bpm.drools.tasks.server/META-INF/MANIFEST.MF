@@ -7,7 +7,7 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Import-Package: javax.persistence;version="2.1.0",
  org.osgi.framework;version="1.8.0",
  org.osgi.service.component.annotations;version="1.2.0"
-Require-Bundle: org.lunifera.drools.allinone;bundle-version="5.5.1",
+Require-Bundle: org.lunifera.drools.allinone56;bundle-version="5.5.1",
  org.apache.aries.transaction.manager;bundle-version="0.2.0",
  org.apache.aries.transaction.wrappers;bundle-version="0.2.0",
  org.lunifera.bpm.drools.common

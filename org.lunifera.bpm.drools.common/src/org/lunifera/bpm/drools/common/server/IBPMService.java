@@ -3,7 +3,6 @@ package org.lunifera.bpm.drools.common.server;
 import org.drools.KnowledgeBase;
 import org.drools.command.Command;
 import org.drools.io.ResourceFactoryService;
-import org.drools.runtime.StatefulKnowledgeSession;
 import org.lunifera.bpm.drools.common.server.commands.IKnowledgeBaseCommand;
 import org.lunifera.bpm.drools.common.server.commands.ITaskServiceCommand;
 
@@ -62,5 +61,13 @@ public interface IBPMService {
 	 * @return
 	 */
 	public org.jbpm.task.TaskService createTaskClient();
+
+	/**
+	 * Loads the session with the given id.
+	 * 
+	 * @param sessionId
+	 * @return
+	 */
+	IDroolsSession loadSession(int sessionId);
 
 }

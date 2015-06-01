@@ -10,16 +10,15 @@
  */
 package org.lunifera.bpm.drools.ui.vaaclipse.context;
 
-import javax.annotation.PreDestroy;
-
 import org.eclipse.e4.core.contexts.ContextFunction;
+import org.eclipse.e4.core.contexts.ContextInjectionFactory;
 import org.eclipse.e4.core.contexts.IEclipseContext;
 import org.eclipse.e4.ui.model.application.MApplication;
 import org.jbpm.task.TaskService;
 import org.lunifera.bpm.drools.common.server.IBPMService;
 import org.osgi.service.component.annotations.Component;
 
-@Component(service = org.eclipse.e4.core.contexts.IContextFunction.class, property = { "service.context.key=org.jbpm.task.TaskService" })
+@Component(service = org.eclipse.e4.core.contexts.IContextFunction.class, immediate = true, property = { "service.context.key=org.jbpm.task.TaskService" })
 public class TaskServiceContextFunctionFactory extends ContextFunction {
 
 	public TaskServiceContextFunctionFactory() {
@@ -28,20 +27,20 @@ public class TaskServiceContextFunctionFactory extends ContextFunction {
 
 	@Override
 	public Object compute(IEclipseContext context, String contextKey) {
-		MApplication application = context.get(MApplication.class);
-		IEclipseContext rootContext = application.getContext();
-
-		TaskService client = rootContext.getLocal(TaskService.class);
-		if (client == null) {
-			// access the OSGi service
-			IBPMService service = rootContext.get(IBPMService.class);
-			if (service == null) {
-				throw new IllegalStateException(
-						"BpmService must be available as an OSGi service!");
-			}
-			client = service.createTaskClient();
-			rootContext.set(TaskService.class, client);
+		// access the OSGi service
+		IBPMService service = context.get(IBPMService.class);
+		if (service == null) {
+			throw new IllegalStateException(
+					"BpmService must be available as an OSGi service!");
 		}
+
+		// create the original task service
+		context.set("delegatingTaskService", service.createTaskClient());
+		TaskService client = ContextInjectionFactory.make(
+				DisposeableTaskService.class, context);
+		context.set(TaskService.class, client);
+		client.connect();
+
 		return client;
 	}
 

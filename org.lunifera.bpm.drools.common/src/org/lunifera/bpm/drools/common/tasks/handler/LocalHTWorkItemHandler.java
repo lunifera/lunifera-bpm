@@ -19,6 +19,7 @@ public class LocalHTWorkItemHandler extends
 
 	protected Task createTaskBasedOnWorkItemParams(WorkItem workItem) {
 		Task task = super.createTaskBasedOnWorkItemParams(workItem);
+		workItem.getParameter("inputType");
 		task.setDelegation(new Delegation());
 		return task;
 	}

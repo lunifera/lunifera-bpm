@@ -61,10 +61,10 @@
 			<property name="eclipselink.target-server"
 				value="org.lunifera.runtime.eclipselink.core.fragment.LuniferaPlatform" />
 			<property name="eclipselink.target-database" value="Derby" />
-			<property name="javax.persistence.jdbc.driver" value="org.apache.derby.jdbc.EmbeddedDriver" />
-			<property name="javax.persistence.jdbc.url" value="jdbc:derby:carstoreDB;create=true" />
-			<property name="javax.persistence.jdbc.user" value="app" />
-			<property name="javax.persistence.jdbc.password" value="app" />
+<!-- 			<property name="javax.persistence.jdbc.driver" value="org.apache.derby.jdbc.EmbeddedDriver" /> -->
+<!-- 			<property name="javax.persistence.jdbc.url" value="jdbc:derby:carstoreDB;create=true" /> -->
+<!-- 			<property name="javax.persistence.jdbc.user" value="app" /> -->
+<!-- 			<property name="javax.persistence.jdbc.password" value="app" /> -->
 
 			<property name="eclipselink.logging.level" value="FINE" />
 			<property name="eclipselink.logging.timestamp" value="false" />
@@ -84,7 +84,7 @@
 			<property name="eclipselink.ddl-generation.output-mode"
 				value="both" />
 
-<!-- 			<property name="eclipselink.weaving" value="static" /> -->
+			<property name="eclipselink.weaving" value="static" />
 		</properties>
 	</persistence-unit>
 </persistence>

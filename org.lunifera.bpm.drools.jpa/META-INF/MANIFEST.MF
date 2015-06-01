@@ -22,7 +22,7 @@ Require-Bundle: org.eclipse.gemini.dbaccess.util;bundle-version="1.1.0",
  org.eclipse.persistence.core;bundle-version="2.5.1",
  org.eclipse.persistence.jpa;bundle-version="2.5.1",
  org.apache.commons.logging;bundle-version="1.1.1",
- org.lunifera.drools.allinone;bundle-version="5.5.1",
+ org.lunifera.drools.allinone56;bundle-version="5.5.1",
  org.lunifera.bpm.drools.common;bundle-version="[0.9.1,0.10.0)"
 Meta-Persistence: META-INF/persistence.xml
 Bundle-Vendor: Lunifera GmbH

@@ -10,12 +10,15 @@
  */
 package org.lunifera.bpm.drools.ui.vaaclipse;
 
+import java.util.HashMap;
+
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 
 import org.eclipse.e4.core.contexts.IEclipseContext;
-import org.eclipse.e4.ui.model.application.MApplication;
+import org.jbpm.task.TaskService;
 import org.jbpm.task.query.TaskSummary;
+import org.lunifera.bpm.drools.ui.vaaclipse.context.IDroolsContextConstants;
 import org.lunifera.bpm.drools.ui.vaadin.TaskField;
 import org.lunifera.ecview.core.common.context.II18nService;
 import org.lunifera.runtime.web.vaadin.common.resource.IResourceProvider;
@@ -40,11 +43,13 @@ public class TaskView {
 	@Inject
 	private IEclipseContext eclipseContext;
 	@Inject
-	private MApplication app;
-	@Inject
 	private II18nService i18nService;
 	@Inject
 	private IResourceProvider resourceProvider;
+	@Inject
+	TaskService service;
+
+	private TaskField taskField;
 
 	@Inject
 	public TaskView() {
@@ -53,8 +58,7 @@ public class TaskView {
 	@SuppressWarnings("serial")
 	@PostConstruct
 	public void setup() {
-		TaskField taskField = new TaskField(i18nService, resourceProvider,
-				false);
+		taskField = new TaskField(service, i18nService, resourceProvider, false);
 		taskField.setSizeFull();
 		parent.addComponent(taskField);
 
@@ -63,8 +67,14 @@ public class TaskView {
 			public void valueChange(ValueChangeEvent event) {
 				eclipseContext.set(TaskSummary.class, (TaskSummary) event
 						.getProperty().getValue());
+				eclipseContext.set(IDroolsContextConstants.ACTIVE_TASK_DATA,
+						new HashMap<String, Object>());
 			}
 		});
+	}
+
+	public void refresh() {
+		taskField.refresh();
 	}
 
 }

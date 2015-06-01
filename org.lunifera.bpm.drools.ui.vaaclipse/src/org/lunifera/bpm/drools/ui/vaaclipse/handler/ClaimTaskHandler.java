@@ -16,6 +16,7 @@ import javax.inject.Named;
 import org.eclipse.e4.core.di.annotations.CanExecute;
 import org.eclipse.e4.core.di.annotations.Execute;
 import org.eclipse.e4.core.di.annotations.Optional;
+import org.jbpm.task.Status;
 import org.jbpm.task.TaskService;
 import org.jbpm.task.query.TaskSummary;
 
@@ -36,6 +37,9 @@ public class ClaimTaskHandler {
 
 	@CanExecute
 	public boolean canExecute(@Optional TaskSummary taskSummary) {
-		return taskSummary != null;
+		if (taskSummary == null) {
+			return false;
+		}
+		return taskSummary.getStatus() == Status.Created;
 	}
 }
