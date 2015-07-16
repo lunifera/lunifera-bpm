@@ -14,7 +14,8 @@ Require-Bundle: org.lunifera.drools.allinone;bundle-version="5.5.1",
  org.lunifera.bpm.drools.common;bundle-version="0.1.0",
  org.lunifera.xtext.builder.metadata.services,
  org.eclipse.emf.common;bundle-version="2.10.1",
- com.google.inject;bundle-version="3.0.0"
+ com.google.inject;bundle-version="3.0.0",
+ javax.validation
 Bundle-Vendor: Lunifera GmbH
 Export-Package: org.lunifera.bpm.drools.kbase.extender
 Service-Component: OSGI-INF/org.lunifera.bpm.drools.kbase.extender.KnowledgebaseParticipant.xml
