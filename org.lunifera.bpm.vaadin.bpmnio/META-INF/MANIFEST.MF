@@ -10,11 +10,14 @@ Import-Package: org.osgi.framework;version="1.8.0",
  org.osgi.service.component;version="1.2.2",
  org.osgi.service.component.annotations;version="1.2.0",
  org.slf4j;version="1.7.2"
-Require-Bundle: com.vaadin.client;bundle-version="7.4.3",
- com.vaadin.server;bundle-version="7.4.3",
- com.vaadin.shared;bundle-version="7.4.3",
+Require-Bundle: com.vaadin.client;bundle-version="7.3.8",
+ com.vaadin.server;bundle-version="7.3.8",
+ com.vaadin.shared;bundle-version="7.3.8",
  org.json;bundle-version="0.0.20080701",
- org.jsoup;bundle-version="1.7.2"
+ org.jsoup;bundle-version="1.7.2",
+ com.vaadin.client-compiled;bundle-version="7.3.8",
+ com.vaadin.push;bundle-version="7.3.8",
+ com.vaadin.themes;bundle-version="7.3.8"
 Export-Package: org.lunifera.bpmn.vaadin.bpmnio,
  org.lunifera.bpmn.vaadin.bpmnio.client.modeler,
  org.lunifera.bpmn.vaadin.bpmnio.client.resources

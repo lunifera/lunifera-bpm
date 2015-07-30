@@ -21,9 +21,9 @@ public class ResourceInjector {
      * Override this with deferred binding to customize injected stuff
      */
     protected void injectResources() {
-//        bundle.css().ensureInjected();
-//        bundle.cssOther().ensureInjected();
-//        injectScript(bundle.javaScript().getText());
+        bundle.css().ensureInjected();
+        bundle.cssOther().ensureInjected();
+        injectScript(bundle.javaScript().getText());
     }
 
     private static native void injectScript(String script)

@@ -15,6 +15,6 @@ import com.vaadin.shared.communication.ClientRpc;
 
 public interface BpmnModelerClientRpc extends ClientRpc {
 	
-	public void load(Resource content);
+//	public void load(Resource content);
 
 }

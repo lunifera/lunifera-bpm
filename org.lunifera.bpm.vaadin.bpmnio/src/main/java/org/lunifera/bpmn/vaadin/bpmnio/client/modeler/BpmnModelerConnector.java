@@ -13,6 +13,8 @@ package org.lunifera.bpmn.vaadin.bpmnio.client.modeler;
 import org.lunifera.bpmn.vaadin.bpmnio.BpmnModeler;
 import org.lunifera.bpmn.vaadin.bpmnio.client.resources.ResourceInjector;
 
+import com.google.gwt.core.client.GWT;
+import com.google.gwt.user.client.ui.Widget;
 import com.vaadin.client.communication.RpcProxy;
 import com.vaadin.client.communication.StateChangeEvent;
 import com.vaadin.client.ui.AbstractComponentConnector;
@@ -45,10 +47,10 @@ public class BpmnModelerConnector extends AbstractComponentConnector {
 		return (BpmnModelerState) super.getState();
 	}
 
-	// @Override
-	// protected Widget createWidget() {
-	// return GWT.create(BpmnModelerWidget.class);
-	// }
+	 @Override
+	 protected Widget createWidget() {
+	 return GWT.create(BpmnModelerWidget.class);
+	 }
 
 	@Override
 	public BpmnModelerWidget getWidget() {
@@ -76,6 +78,11 @@ public class BpmnModelerConnector extends AbstractComponentConnector {
 		public void load() {
 			getWidget().clicked();
 		}
+
+//		@Override
+//		public void load(Resource content) {
+//			
+//		}
 		
 	}
 

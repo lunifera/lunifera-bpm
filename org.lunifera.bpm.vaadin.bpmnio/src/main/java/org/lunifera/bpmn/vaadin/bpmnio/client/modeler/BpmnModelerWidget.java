@@ -10,7 +10,6 @@
  */
 package org.lunifera.bpmn.vaadin.bpmnio.client.modeler;
 
-import com.google.gwt.canvas.client.Canvas;
 import com.google.gwt.dom.client.Document;
 import com.google.gwt.user.client.ui.Widget;
 
@@ -20,6 +19,7 @@ public class BpmnModelerWidget extends Widget {
 
 	public BpmnModelerWidget() {
 		setElement(Document.get().createDivElement());
+		getElement().setId("bpmnio-canvas");
 		setStylePrimaryName(getElement(), "bpmn-io-editor");
 	}
 

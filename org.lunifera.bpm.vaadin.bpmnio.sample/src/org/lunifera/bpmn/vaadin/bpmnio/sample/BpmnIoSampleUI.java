@@ -50,7 +50,7 @@ public class BpmnIoSampleUI extends UI {
 		b2.addClickListener(new Button.ClickListener() {
 			@Override
 			public void buttonClick(ClickEvent event) {
-				modler.click();
+//				modler.click();
 			}
 		});
 	}

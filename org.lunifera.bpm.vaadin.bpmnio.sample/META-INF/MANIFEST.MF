@@ -3,13 +3,13 @@ Bundle-ManifestVersion: 2
 Bundle-Name: Sample - Vaadin BPMN.io modeler
 Bundle-SymbolicName: org.lunifera.bpm.vaadin.bpmnio.sample;singleton:=true
 Bundle-Version: 0.9.1.qualifier
-Require-Bundle: com.vaadin.shared;bundle-version="7.4.3",
- com.vaadin.client;bundle-version="7.4.3",
- com.vaadin.server;bundle-version="7.4.3",
+Require-Bundle: com.vaadin.shared;bundle-version="7.3.8",
+ com.vaadin.client;bundle-version="7.3.8",
+ com.vaadin.server;bundle-version="7.3.8",
  org.json;bundle-version="0.0.1",
  com.ibm.icu;bundle-version="50.1.1",
  javax.servlet;bundle-version="3.0.0",
- org.lunifera.bpmn.vaadin.bpmnio;bundle-version="0.9.1",
+ org.lunifera.bpm.vaadin.bpmnio;bundle-version="0.9.1",
  org.jsoup;bundle-version="1.7.2"
 Import-Package: org.osgi.framework;version="1.7.0",
  org.osgi.service.component.annotations;version="1.2.0",
